@@ -1,5 +1,10 @@
 const { connectToRabbitMQ, consumerQueue } = require("../dbs/init.rabbit")
 
+const log = console.log
+console.log = function() {
+    log.apply(console, [new Date()].concat(arguments))
+}
+
 const messageService = {
     consumerToQueue: async (queueName) => {
         try {
