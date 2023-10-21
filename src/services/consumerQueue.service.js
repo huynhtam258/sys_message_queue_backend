@@ -20,6 +20,7 @@ const messageService = {
             const { channel, connection } = await connectToRabbitMQ()
             const notiQueue = 'notificationQueueProcess' // assertQueue
 
+            // timeExpried: thời gian nhận tin nhắn
             // const timeExpried = 5000 // trường hợp thành công
             const timeExpried = 15000 // trường hợp test thất bại
             setTimeout(() => {
@@ -39,7 +40,7 @@ const messageService = {
             const { channel, connection } = await connectToRabbitMQ()
 
             const notificationExchangeDLX = 'notificationExDLX' // notificationEx direct
-            const notificationRoutingKeyDLX = 'notificationExDLX' //assert
+            const notificationRoutingKeyDLX = 'notificationRoutingKeyDLX' //assert
             const notiQueueHandler = 'notificationQueueHotFix'
 
             await channel.assertExchange(notificationRoutingKeyDLX, 'direct', {
